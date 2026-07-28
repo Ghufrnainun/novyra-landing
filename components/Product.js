@@ -1,63 +1,46 @@
 "use client";
-import { motion, fadeUp } from "./motion";
+import { motion, fadeUpVar } from "./motion";
 
 export default function Product() {
   return (
-    <section id="product" className="relative py-24 px-4 sm:px-8 max-w-6xl mx-auto">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-80px" }}
-        className="text-center mb-16"
-      >
-        <motion.span variants={fadeUp} className="inline-block text-xs font-semibold tracking-[0.15em] uppercase text-[#E6A02E] mb-3">
-          ✦ Product
-        </motion.span>
-        <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">
-          See Novyra in action.
-        </motion.h2>
-        <motion.p variants={fadeUp} className="text-[#a0a4ab] max-w-lg mx-auto">
-          Generating a complete lesson plan in under 30 seconds. No prompting expertise required.
-        </motion.p>
+    <section id="product" className="relative py-28 px-6 max-w-5xl mx-auto">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-[rgba(230,160,46,0.2)] to-transparent" />
+
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="text-center mb-14">
+        <motion.span variants={fadeUpVar} className="inline-block text-[11px] font-medium tracking-[0.12em] uppercase text-[#71717a] mb-3">Product</motion.span>
+        <motion.h2 variants={fadeUpVar} className="text-[clamp(1.4rem,3.5vw,2.4rem)] font-semibold tracking-[-0.02em] text-[#ededef] mb-3" style={{ fontWeight: 510 }}>See Novyra in action.</motion.h2>
+        <motion.p variants={fadeUpVar} className="text-[15px] text-[#71717a] max-w-md mx-auto">Generating a complete lesson plan in under 30 seconds.</motion.p>
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 30, scale: 0.98 }}
+        initial={{ opacity: 0, y: 20, scale: 0.98 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-        className="rounded-2xl overflow-hidden"
-        style={{ border: "1px solid rgba(255,255,255,0.08)", background: "#111" }}
+        transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+        className="rounded-[5px] overflow-hidden"
+        style={{ border: "1px solid rgba(255,255,255,0.08)", background: "#111113" }}
       >
-        {/* Mockup browser bar */}
-        <div className="flex items-center gap-2 px-4 py-3" style={{ background: "#1a1a1a", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-          <span className="w-3 h-3 rounded-full bg-[#FF5F56]" />
-          <span className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
-          <span className="w-3 h-3 rounded-full bg-[#27C93F]" />
-          <span className="ml-4 text-xs font-mono text-[#6b6f76]">app.novyra.my.id/planner/new</span>
+        <div className="flex items-center gap-1.5 px-4 py-2.5" style={{ background: "#151517", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+          <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+          <span className="ml-3 text-[11px] font-mono text-[#71717a]">app.novyra.my.id/planner</span>
         </div>
 
-        {/* Terminal-like content */}
-        <div className="p-6 sm:p-8 font-mono text-sm leading-relaxed">
+        <div className="p-6 sm:p-8 font-mono text-[13px] leading-relaxed text-[#71717a]">
           <div><span className="text-[#E6A02E]">$</span> novyra generate</div>
-          <div className="mt-1">
-            <span className="text-[#60A5FA]">≫</span> Topic: <span className="text-[#f7f8f8]">Perubahan Iklim (Climate Change)</span> — IPA Kelas 7
+          <div className="mt-2"><span className="text-[#60A5FA]">&gt;</span> Topic: <span className="text-[#d4d4d8]">Perubahan Iklim</span> — IPA Kelas 7</div>
+          <div><span className="text-[#60A5FA]">&gt;</span> Curriculum: <span className="text-[#d4d4d8]">Kurikulum Merdeka Fase D</span></div>
+          <div><span className="text-[#60A5FA]">&gt;</span> Duration: <span className="text-[#d4d4d8]">2 JP x 40 min</span></div>
+          <div className="mt-4 text-[#71717a] animate-pulse">⠋ Generating...</div>
+          <div className="mt-3 space-y-1.5">
+            <div><span className="text-[#4ADE80]">✓</span> <span className="text-[#E6A02E]">RPP:</span> perubahan-iklim-k7.pdf</div>
+            <div><span className="text-[#4ADE80]">✓</span> ATP alignment: CP &rarr; TP &rarr; ATP &rarr; Modul</div>
+            <div><span className="text-[#4ADE80]">✓</span> 3 formative assessments</div>
+            <div><span className="text-[#4ADE80]">✓</span> 2 differentiation strategies</div>
           </div>
-          <div>
-            <span className="text-[#60A5FA]">≫</span> Curriculum: <span className="text-[#f7f8f8]">Kurikulum Merdeka Fase D</span>
-          </div>
-          <div>
-            <span className="text-[#60A5FA]">≫</span> Duration: <span className="text-[#f7f8f8]">2 JP x 40 menit</span>
-          </div>
-          <div className="mt-4 text-[#6b6f76]">⠋ Generating... (2.4s)</div>
-          <div className="mt-3 space-y-1">
-            <div><span className="text-[#4ADE80]">✓</span> <span className="text-[#E6A02E]">RPP generated:</span> perubahan-iklim-k7-s1.pdf</div>
-            <div><span className="text-[#4ADE80]">✓</span> ATP alignment: CP → TP → ATP → Modul</div>
-            <div><span className="text-[#4ADE80]">✓</span> 3 formative assessments auto-generated</div>
-            <div><span className="text-[#4ADE80]">✓</span> 2 differentiation strategies (remedial + enrichment)</div>
-          </div>
-          <div className="mt-4 text-[#6b6f76]"># Download, edit, or share via Google Classroom</div>
-          <div className="mt-1"><span className="text-[#E6A02E]">$</span> <span className="text-[#f7f8f8]">Ready to teach.</span></div>
+          <div className="mt-4 text-[#71717a]"># Ready to teach.</div>
+          <div className="mt-1"><span className="text-[#E6A02E]">$</span> <span className="text-[#d4d4d8]">Done in 2.4s.</span></div>
         </div>
       </motion.div>
     </section>
