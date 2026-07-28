@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0a0a0b;
-  --surface: #111113;
-  --elevated: #18181a;
+  --bg: #08080a;
+  --surface: #0f0f12;
+  --elevated: #16161a;
   --border: rgba(255,255,255,0.06);
-  --border-hover: rgba(255,255,255,0.1);
+  --border-hover: rgba(255,255,255,0.12);
   --text: #ededef;
   --text-secondary: #a1a1aa;
   --text-tertiary: #71717a;
   --gold: #E6A02E;
+  --gold-bright: #f5b342;
   --gold-dim: rgba(230,160,46,0.12);
 }
 
@@ -26,43 +27,131 @@ body {
   color: var(--text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 ::selection { background: rgba(230,160,46,0.25); color: #fff; }
 
-/* Animated background grid */
-.bg-grid {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 48px 48px;
+/* === Aurora background === */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-/* Animated orbs */
-.orb {
+.aurora-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
+  filter: blur(120px);
   will-change: transform, opacity;
 }
 
-/* Glass card */
+.aurora-1 {
+  width: 600px; height: 600px;
+  background: rgba(230,160,46,0.06);
+  top: -10%; left: -15%;
+  animation: drift1 20s ease-in-out infinite;
+}
+.aurora-2 {
+  width: 500px; height: 500px;
+  background: rgba(230,160,46,0.04);
+  top: 30%; right: -10%;
+  animation: drift2 25s ease-in-out infinite;
+}
+.aurora-3 {
+  width: 450px; height: 450px;
+  background: rgba(99,102,241,0.03);
+  bottom: -10%; left: 20%;
+  animation: drift3 30s ease-in-out infinite;
+}
+.aurora-4 {
+  width: 350px; height: 350px;
+  background: rgba(255,255,255,0.015);
+  top: 60%; left: 50%;
+  animation: drift1 18s ease-in-out infinite reverse;
+}
+
+@keyframes drift1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+  33% { transform: translate(60px, -40px) scale(1.1); opacity: 1; }
+  66% { transform: translate(-30px, 50px) scale(0.95); opacity: 0.6; }
+}
+@keyframes drift2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+  50% { transform: translate(-80px, 60px) scale(1.15); opacity: 1; }
+}
+@keyframes drift3 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+  40% { transform: translate(50px, -30px) scale(1.2); opacity: 0.8; }
+  70% { transform: translate(-40px, 20px) scale(0.9); opacity: 0.4; }
+}
+
+/* === Grid overlay === */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%);
+}
+
+/* === Glass === */
 .glass {
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.025);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.06);
 }
-
+.glass-hover {
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
 .glass-hover:hover {
-  background: rgba(255,255,255,0.05);
-  border-color: var(--border-hover);
+  background: rgba(255,255,255,0.045);
+  border-color: rgba(255,255,255,0.12);
+  transform: translateY(-2px);
 }
 
-/* Gradient text */
+/* === Gradient text === */
 .gradient-gold {
   background: linear-gradient(135deg, #E6A02E 0%, #f5b342 50%, #d49428 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* === Shimmer === */
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(230,160,46,0.08) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* === Float === */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-delay { animation: float 6s ease-in-out 2s infinite; }
+
+/* === Gradient border === */
+.gold-border {
+  position: relative;
+}
+.gold-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(230,160,46,0.3), rgba(230,160,46,0));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }

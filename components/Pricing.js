@@ -71,13 +71,11 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="relative py-28 px-6 max-w-6xl mx-auto">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-[rgba(230,160,46,0.2)] to-transparent" />
-
-      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="text-center mb-16">
-        <motion.span variants={fadeUpVar} className="inline-block text-[11px] font-medium tracking-[0.12em] uppercase text-[#71717a] mb-3">Pricing</motion.span>
-        <motion.h2 variants={fadeUpVar} className="text-[clamp(1.4rem,3.5vw,2.4rem)] font-semibold tracking-[-0.02em] text-[#ededef] mb-3" style={{ fontWeight: 510 }}>Simple, transparent pricing.</motion.h2>
-        <motion.p variants={fadeUpVar} className="text-[15px] text-[#71717a] max-w-md mx-auto">Built for schools of every size. Enterprise includes dedicated support.</motion.p>
+    <section id="pricing" className="relative py-32 px-6 lg:px-10 max-w-6xl mx-auto">
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="mb-14 max-w-xl">
+        <motion.span variants={fadeUpVar} className="inline-block text-[11px] font-mono tracking-[0.15em] uppercase text-[#E6A02E] mb-4">/ pricing</motion.span>
+        <motion.h2 variants={fadeUpVar} className="text-[clamp(1.6rem,4vw,2.6rem)] font-semibold tracking-[-0.03em] text-[#ededef] leading-[1.1] mb-4" style={{ fontWeight: 520 }}>Simple, transparent<br />pricing.</motion.h2>
+        <motion.p variants={fadeUpVar} className="text-[15px] text-[#71717a] leading-relaxed">Built for schools of every size. Enterprise includes dedicated support.</motion.p>
       </motion.div>
 
       <motion.div variants={staggerVar} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 items-start">
@@ -85,10 +83,10 @@ export default function Pricing() {
           <motion.div
             key={plan.name}
             variants={fadeUpVar}
-            className="relative rounded-[5px] p-6 transition-all duration-200"
+            className="relative rounded-2xl p-6 transition-all duration-300"
             style={{
-              background: plan.featured ? "rgba(230,160,46,0.04)" : "rgba(255,255,255,0.02)",
-              border: plan.featured ? "1px solid rgba(230,160,46,0.3)" : "1px solid rgba(255,255,255,0.06)",
+              background: plan.featured ? "rgba(230,160,46,0.04)" : "rgba(255,255,255,0.025)",
+              border: plan.featured ? "1px solid rgba(230,160,46,0.25)" : "1px solid rgba(255,255,255,0.06)",
             }}
           >
             {plan.featured && (
