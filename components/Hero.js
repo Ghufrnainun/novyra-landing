@@ -17,14 +17,14 @@ export default function Hero() {
   useGSAP(
     () => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from(".hero-badge", { y: 20, opacity: 0, duration: 0.5 })
-        .from(".hero-h1-line", { yPercent: 120, opacity: 0, duration: 0.8, stagger: 0.12 }, "-=0.2")
-        .from(".hero-sub", { y: 20, opacity: 0, duration: 0.6 }, "-=0.4")
-        .from(".hero-cta", { y: 16, opacity: 0, duration: 0.5, stagger: 0.08 }, "-=0.3")
-        .from(".hero-trust", { opacity: 0, duration: 0.4 }, "-=0.2")
-        .from(".hero-mockup", { x: 40, opacity: 0, duration: 0.8, rotate: 2 }, "-=0.8")
-        .from(".hero-badge-float", { scale: 0.6, opacity: 0, duration: 0.5 }, "-=0.3")
-        .from(".hero-stat", { y: 20, opacity: 0, duration: 0.5, stagger: 0.1 }, "-=0.2");
+      tl.fromTo(".hero-badge", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 })
+        .fromTo(".hero-h1-line", { yPercent: 120, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.8, stagger: 0.12 }, "-=0.2")
+        .fromTo(".hero-sub", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, "-=0.4")
+        .fromTo(".hero-cta", { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.08 }, "-=0.3")
+        .fromTo(".hero-trust", { opacity: 0 }, { opacity: 1, duration: 0.4 }, "-=0.2")
+        .fromTo(".hero-mockup", { x: 40, opacity: 0, rotate: 2 }, { x: 0, opacity: 1, rotate: 0, duration: 0.8 }, "-=0.8")
+        .fromTo(".hero-badge-float", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5 }, "-=0.3")
+        .fromTo(".hero-stat", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.1 }, "-=0.2");
     },
     { scope: containerRef }
   );
