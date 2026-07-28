@@ -6,10 +6,11 @@ import Product from "@/components/Product";
 import Pricing from "@/components/Pricing";
 import About from "@/components/About";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
 
 export default function Home() {
   return (
-    <>
+    <SmoothScroll>
       <Aurora />
       <Nav />
       <main className="relative z-10 flex-1">
@@ -20,6 +21,6 @@ export default function Home() {
         <About />
       </main>
       <Footer />
-    </>
+    </SmoothScroll>
   );
 }
