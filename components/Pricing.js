@@ -7,31 +7,64 @@ const plans = [
     price: "$0",
     period: "/month",
     desc: "For individual teachers exploring AI-assisted planning.",
-    features: ["10 lesson plans/month", "Kurikulum Merdeka alignment", "PDF export", "Community support"],
+    features: [
+      "10 lesson plans/month",
+      "Kurikulum Merdeka alignment",
+      "PDF export",
+      "Community support",
+    ],
     cta: "Get Started",
     featured: false,
-  },
-  {
-    name: "Enterprise",
-    price: "$960",
-    period: "/year",
-    desc: "Complete platform for schools and institutions. Unlimited access.",
-    featured: true,
-    features: [
-      "Unlimited lesson plans", "Multi-curriculum (Merdeka, Cambridge, IB)",
-      "Assessment engine with auto-grading", "School dashboard & analytics",
-      "LMS integration (Google Classroom, Moodle)", "Dedicated account manager",
-      "On-premise deployment option", "Priority support (24/7)",
-    ],
-    cta: "Contact Sales",
   },
   {
     name: "Pro",
     price: "$29",
     period: "/month",
     desc: "For departments and small schools.",
-    features: ["100 lesson plans/month", "All curriculum standards", "Assessment engine", "Google Classroom integration", "Email support"],
+    features: [
+      "100 lesson plans/month",
+      "Multi-curriculum (Merdeka, Cambridge)",
+      "Assessment engine",
+      "Google Classroom integration",
+      "Priority email support",
+    ],
     cta: "Subscribe",
+    featured: false,
+  },
+  {
+    name: "Enterprise",
+    price: "$480",
+    period: "/year",
+    desc: "Complete platform for schools and institutions. Up to 50 teachers.",
+    featured: true,
+    features: [
+      "Unlimited lesson plans",
+      "Multi-curriculum (Merdeka, Cambridge, IB)",
+      "Assessment engine with auto-grading",
+      "School dashboard & analytics",
+      "LMS integration (Google Classroom, Moodle)",
+      "On-premise deployment option",
+      "Dedicated account manager",
+      "Priority support (24/7)",
+    ],
+    cta: "Contact Sales",
+  },
+  {
+    name: "Ultimate",
+    price: "$960",
+    period: "/year",
+    desc: "Maximum capability for large institutions. Unlimited teachers.",
+    features: [
+      "Everything in Enterprise",
+      "EduBI — BI dashboard for school analytics",
+      "AI-powered student performance prediction",
+      "Dinas Pendidikan integration & reporting",
+      "Custom branding & white-label",
+      "API access & webhooks",
+      "SLA-backed 99.9% uptime",
+      "Dedicated infrastructure (on-prem)",
+    ],
+    cta: "Contact Sales",
     featured: false,
   },
 ];
@@ -47,15 +80,15 @@ export default function Pricing() {
         <motion.p variants={fadeUpVar} className="text-[15px] text-[#71717a] max-w-md mx-auto">Built for schools of every size. Enterprise includes dedicated support.</motion.p>
       </motion.div>
 
-      <motion.div variants={staggerVar} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="grid md:grid-cols-3 gap-4 items-start">
+      <motion.div variants={staggerVar} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 items-start">
         {plans.map((plan) => (
           <motion.div
             key={plan.name}
             variants={fadeUpVar}
-            className="relative rounded-[5px] p-6 sm:p-8 transition-all duration-200"
+            className="relative rounded-[5px] p-6 transition-all duration-200"
             style={{
-              background: plan.featured ? "rgba(230,160,46,0.05)" : "rgba(255,255,255,0.02)",
-              border: plan.featured ? "1px solid rgba(230,160,46,0.25)" : "1px solid rgba(255,255,255,0.06)",
+              background: plan.featured ? "rgba(230,160,46,0.04)" : "rgba(255,255,255,0.02)",
+              border: plan.featured ? "1px solid rgba(230,160,46,0.3)" : "1px solid rgba(255,255,255,0.06)",
             }}
           >
             {plan.featured && (
@@ -65,17 +98,17 @@ export default function Pricing() {
             )}
 
             <div className="text-[13px] font-medium text-[#71717a] mb-2">{plan.name}</div>
-            <div className="text-[2.2rem] font-semibold tracking-[-0.02em] text-[#ededef]" style={{ fontWeight: 510 }}>
+            <div className="text-[1.8rem] font-semibold tracking-[-0.02em] text-[#ededef]" style={{ fontWeight: 510 }}>
               {plan.price}
-              <span className="text-[15px] font-normal text-[#71717a]">{plan.period}</span>
+              <span className="text-[14px] font-normal text-[#71717a]">{plan.period}</span>
             </div>
-            <div className="text-[13px] text-[#71717a] mt-2 mb-6">{plan.desc}</div>
+            <div className="text-[12px] text-[#71717a] mt-2 mb-5 leading-relaxed">{plan.desc}</div>
 
-            <ul className="space-y-2.5 mb-8">
+            <ul className="space-y-2 mb-6">
               {plan.features.map((f) => (
-                <li key={f} className="flex items-start gap-2.5 text-[13px] text-[#a1a1aa]">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#E6A02E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0">
-                    <path d="M11.5 3.5 5 11 2.5 8"/>
+                <li key={f} className="flex items-start gap-2 text-[12px] text-[#a1a1aa]">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#E6A02E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0">
+                    <path d="M10 3 4.5 9 2 6.5"/>
                   </svg>
                   {f}
                 </li>
