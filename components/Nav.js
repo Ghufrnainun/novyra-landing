@@ -25,7 +25,13 @@ export default function Nav() {
           </a>
         ))}
         <a
-          href="#pricing"
+          href="/login"
+          className="text-[13px] font-medium text-[#a1a1aa] hover:text-[#ededef] transition-colors duration-200"
+        >
+          Sign In
+        </a>
+        <a
+          href="/signup"
           className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-[5px] text-[13px] font-medium bg-[#E6A02E] text-black"
         >
           Get Started
