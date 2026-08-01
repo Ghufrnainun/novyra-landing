@@ -1,87 +1,60 @@
 "use client";
 import { motion, fadeUpVar } from "./motion";
 
+const steps = [
+  { n: "01", title: "Enter a topic", body: "Type any subject and grade level — IPA Kelas 7, Matematika Peminatan, Sejarah Indonesia." },
+  { n: "02", title: "AI generates the plan", body: "Complete RPP with learning activities, assessments, differentiation — aligned to your curriculum standard." },
+  { n: "03", title: "Export and teach", body: "Download as PDF, share to Google Classroom, or push to your LMS. Ready for the classroom." },
+];
+
 export default function Product() {
   return (
-    <section id="product" className="relative py-32 px-6 lg:px-10 max-w-6xl mx-auto">
-      {/* Asymmetric: text right, terminal left */}
-      <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-14 items-center">
-        {/* Left — copy */}
+    <section id="product" className="relative py-32 lg:py-40 px-6 lg:px-10 max-w-6xl mx-auto">
+      <div className="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-start">
+        {/* Left — section head */}
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}>
-          <motion.span variants={fadeUpVar} className="inline-block text-[11px] font-mono tracking-[0.15em] uppercase text-[#E6A02E] mb-4">/ product</motion.span>
-          <motion.h2 variants={fadeUpVar} className="text-[clamp(1.6rem,4vw,2.6rem)] font-semibold tracking-[-0.03em] text-[#ededef] leading-[1.1] mb-5" style={{ fontWeight: 520 }}>
-            From topic to<br />ready-to-teach<br />in <span className="gradient-gold">2.4 seconds.</span>
+          <motion.span variants={fadeUpVar} className="inline-block text-[11px] font-mono tracking-[0.15em] uppercase mb-4"
+            style={{ color: "var(--color-accent)" }}>
+            How it works
+          </motion.span>
+          <motion.h2 variants={fadeUpVar} className="text-[clamp(1.6rem,4vw,2.6rem)] font-semibold tracking-[-0.03em] leading-[1.1] mb-4"
+            style={{ fontWeight: 520, color: "var(--color-text)" }}>
+            Topic to lesson plan<br />in three steps.
           </motion.h2>
-          <motion.p variants={fadeUpVar} className="text-[15px] text-[#a1a1aa] leading-[1.6] mb-6">
-            Type a topic. Pick a grade. Novyra handles the rest — generating a complete lesson plan with assessments, activities, and curriculum alignment.
+          <motion.p variants={fadeUpVar} className="text-[15px] leading-[1.6]" style={{ color: "var(--color-text-tertiary)" }}>
+            No complex configuration. No template hunting. Just describe what you need to teach.
           </motion.p>
-          <motion.div variants={fadeUpVar} className="space-y-3">
-            {[
-              { step: "01", title: "Enter topic & grade", desc: "Any subject, any grade level" },
-              { step: "02", title: "AI generates RPP + ATP", desc: "Full alignment to curriculum" },
-              { step: "03", title: "Export & teach", desc: "PDF, Docs, or LMS share" },
-            ].map((s) => (
-              <div key={s.step} className="flex items-start gap-3">
-                <span className="font-mono text-[12px] text-[#E6A02E] mt-0.5">{s.step}</span>
-                <div>
-                  <div className="text-[14px] font-medium text-[#ededef]" style={{ fontWeight: 510 }}>{s.title}</div>
-                  <div className="text-[12px] text-[#71717a]">{s.desc}</div>
-                </div>
-              </div>
-            ))}
-          </motion.div>
         </motion.div>
 
-        {/* Right — terminal mockup */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-          className="relative"
-        >
-          <div className="rounded-2xl overflow-hidden" style={{ background: "rgba(15,15,18,0.7)", backdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
-            <div className="flex items-center gap-1.5 px-5 py-3.5" style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-              <span className="w-3 h-3 rounded-full bg-[#FF5F56]" />
-              <span className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
-              <span className="w-3 h-3 rounded-full bg-[#27C93F]" />
-              <span className="ml-3 text-[11px] font-mono text-[#52525b]">app.novyra.my.id — planner</span>
-            </div>
-
-            <div className="p-6 sm:p-8 font-mono text-[13px] leading-[1.8] text-[#52525b]">
-              <div className="text-[#E6A02E]">$ novyra generate --topic "perubahan iklim"</div>
-              <div className="mt-3 space-y-0.5">
-                <div><span className="text-[#60A5FA]">topic</span>     <span className="text-[#d4d4d8]">Perubahan Iklim</span></div>
-                <div><span className="text-[#60A5FA]">grade</span>     <span className="text-[#d4d4d8]">Kelas 7 — IPA</span></div>
-                <div><span className="text-[#60A5FA]">curriculum</span> <span className="text-[#d4d4d8]">Merdeka Fase D</span></div>
-                <div><span className="text-[#60A5FA]">duration</span>   <span className="text-[#d4d4d8]">2 JP x 40 min</span></div>
+        {/* Right — numbered steps */}
+        <div className="space-y-1">
+          {steps.map((s, i) => (
+            <motion.div
+              key={s.n}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={fadeUpVar}
+              custom={i}
+              className="group flex items-start gap-5 px-5 py-5 rounded-xl transition-colors duration-200"
+              style={{ borderBottom: i < 2 ? "1px solid var(--color-border)" : "none" }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.015)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
+            >
+              <span className="shrink-0 text-[13px] font-mono pt-0.5" style={{ color: "var(--color-accent)" }}>
+                {s.n}
+              </span>
+              <div>
+                <h3 className="text-[15px] font-medium mb-1" style={{ fontWeight: 510, color: "var(--color-text)" }}>
+                  {s.title}
+                </h3>
+                <p className="text-[13px] leading-[1.6]" style={{ color: "var(--color-text-tertiary)" }}>
+                  {s.body}
+                </p>
               </div>
-              <div className="mt-5 text-[#71717a] animate-pulse">  Generating...</div>
-              <div className="mt-4 space-y-1.5">
-                <div className="flex items-center gap-2"><span className="text-[#4ADE80]">✓</span> <span className="text-[#E6A02E]">RPP</span> <span className="text-[#a1a1aa]">perubahan-iklim-k7.pdf</span></div>
-                <div className="flex items-center gap-2"><span className="text-[#4ADE80]">✓</span> <span className="text-[#a1a1aa]">ATP alignment: CP → TP → ATP → Modul</span></div>
-                <div className="flex items-center gap-2"><span className="text-[#4ADE80]">✓</span> <span className="text-[#a1a1aa]">3 formative assessments generated</span></div>
-                <div className="flex items-center gap-2"><span className="text-[#4ADE80]">✓</span> <span className="text-[#a1a1aa]">2 differentiation strategies</span></div>
-              </div>
-              <div className="mt-5 pt-4" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
-                <span className="text-[#E6A02E]">$</span> <span className="text-[#d4d4d8]">Done in 2.4s — ready to teach.</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Floating speed badge */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.5 }}
-            className="absolute -top-3 -right-3 animate-float"
-          >
-            <div className="px-3 py-2 rounded-xl text-[11px] font-mono" style={{ background: "rgba(230,160,46,0.1)", backdropFilter: "blur(12px)", border: "1px solid rgba(230,160,46,0.2)" }}>
-              <span className="text-[#E6A02E]">2.4s</span> <span className="text-[#71717a]">avg generation</span>
-            </div>
-          </motion.div>
-        </motion.div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
